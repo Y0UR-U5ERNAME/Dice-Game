@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 1
+// Scene: Title Screen
 
 #include "gbs_types.h"
 #include "data/bg_title.h"
@@ -21,7 +21,7 @@ const struct scene_t scene_1 = {
     .background = TO_FAR_PTR_T(bg_title),
     .collisions = TO_FAR_PTR_T(scene_1_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0, 6, 128), PARALLAX_STEP(6, 0, 0), PARALLAX_STEP(18, 0, 0)
+        PARALLAX_STEP(0,0,0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_8),

@@ -45,11 +45,11 @@ _scene_8_init::
         VM_CAMERA_SET_POS       .LOCAL_TMP2_CAMERA_MOVE_ARGS
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      8, ___bank_script_input_33, _script_input_33
+        VM_CONTEXT_PREPARE      8, ___bank_script_input_39, _script_input_39
         VM_INPUT_ATTACH         1, ^/(8 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      7, ___bank_script_input_34, _script_input_34
+        VM_CONTEXT_PREPARE      7, ___bank_script_input_40, _script_input_40
         VM_INPUT_ATTACH         2, ^/(7 | .OVERRIDE_DEFAULT)/
 
         ; Variable Set To False
@@ -60,7 +60,7 @@ _scene_8_init::
         VM_TIMER_SET            1, 3
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      4, ___bank_script_input_35, _script_input_35
+        VM_CONTEXT_PREPARE      4, ___bank_script_input_41, _script_input_41
         VM_INPUT_ATTACH         16, ^/(4 | .OVERRIDE_DEFAULT)/
 
         ; Stop Script

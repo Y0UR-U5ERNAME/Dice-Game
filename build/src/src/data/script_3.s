@@ -126,8 +126,7 @@ _script_3::
 
         VM_LOAD_PALETTE         4, ^/(.PALETTE_BKG | .PALETTE_COMMIT)/
         .CGB_PAL                31, 31, 31, 31, 23, 17, 31, 11, 12, 17, 0, 8
-        VM_OVERLAY_SET_SUBMAP 3, 8, 6, 2, 13, 14
-        VM_OVERLAY_SET_SUBMAP 9, 8, 8, 2, 12, 16
+        VM_OVERLAY_SET_SUBMAP 3, 8, 14, 2, 6, 3
         
         VM_LOAD_TEXT 0
         .asciz "\003\011\015\001\001Next Level"
@@ -137,4 +136,4 @@ _script_3::
         VM_SET_CONST            VAR_TRANSITION, 0
 
         VM_RESERVE              -1
-        VM_RET_FAR
+        VM_RET_FAR_N            2

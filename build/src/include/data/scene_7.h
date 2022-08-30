@@ -1,7 +1,7 @@
 #ifndef SCENE_7_H
 #define SCENE_7_H
 
-// Scene: Scene 7
+// Scene: Splash Screen
 
 #include "gbs_types.h"
 

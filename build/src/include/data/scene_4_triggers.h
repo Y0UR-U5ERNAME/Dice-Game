@@ -1,7 +1,7 @@
 #ifndef SCENE_4_TRIGGERS_H
 #define SCENE_4_TRIGGERS_H
 
-// Scene: Scene 4
+// Scene: L2
 // Triggers
 
 #include "gbs_types.h"

@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 2
+// Scene: TL6
 // Triggers
 
 #include "gbs_types.h"
@@ -13,7 +13,7 @@ const struct trigger_t scene_16_triggers[] = {
     {
         // Trigger 1,
         .x = 8,
-        .y = 10,
+        .y = 8,
         .width = 2,
         .height = 2,
         .script = TO_FAR_PTR_T(trigger_23_interact),
@@ -22,7 +22,7 @@ const struct trigger_t scene_16_triggers[] = {
     {
         // Trigger 2,
         .x = 6,
-        .y = 10,
+        .y = 8,
         .width = 2,
         .height = 2,
         .script = TO_FAR_PTR_T(trigger_26_interact),

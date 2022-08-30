@@ -2,22 +2,19 @@
 
 .include "vm.i"
 .include "data/game_globals.i"
-.include "macro.i"
 
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_14, _scene_14
+.globl b_wait_frames, _wait_frames
 
 .area _CODE_255
 
 .LOCAL_ACTOR = -4
 .LOCAL_TMP1_WAIT_ARGS = -5
-.LOCAL_TMP2_WAIT_ARGS = -5
-.LOCAL_TMP3_WAIT_ARGS = -7
 
 ___bank_actor_37_update = 255
 .globl ___bank_actor_37_update
 
 _actor_37_update::
-        VM_RESERVE              7
+        VM_RESERVE              5
 
 1$:
         ; If Variable True
@@ -343,7 +340,7 @@ _actor_37_update::
         VM_JUMP                 20$
 19$:
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      1, ___bank_script_input_73, _script_input_73
+        VM_CONTEXT_PREPARE      1, ___bank_script_input_85, _script_input_85
         VM_INPUT_ATTACH         223, ^/(1 | .OVERRIDE_DEFAULT)/
 
         ; If Variable True
@@ -384,31 +381,27 @@ _actor_37_update::
         VM_PUSH_CONST           VAR_S12A0_LOCAL_0 ; Variable V0
         VM_CALL_FAR             ___bank_script_3, _script_3
 
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 120
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
+        ; Input Script Attach
+        VM_CONTEXT_PREPARE      4, ___bank_script_input_86, _script_input_86
+        VM_INPUT_ATTACH         16, ^/(4 | .OVERRIDE_DEFAULT)/
 
-        ; Overlay Hide
-        VM_OVERLAY_HIDE
+        ; Input Script Attach
+        VM_CONTEXT_PREPARE      1, ___bank_script_input_87, _script_input_87
+        VM_INPUT_ATTACH         128, ^/(1 | .OVERRIDE_DEFAULT)/
 
-        ; Load Scene
-        VM_SET_CONST_INT8       _fade_frames_per_step, 1
-        VM_FADE_OUT             1
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 512
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 2)/, 1152
-        VM_ACTOR_SET_POS        .LOCAL_ACTOR
-        VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_DOWN
-        VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_14
+        ; Input Script Attach
+        VM_CONTEXT_PREPARE      2, ___bank_script_input_88, _script_input_88
+        VM_INPUT_ATTACH         64, ^/(2 | .OVERRIDE_DEFAULT)/
+
+        ; Wait For Input
+        VM_INPUT_WAIT           208
 
 20$:
 
 18$:
 
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP3_WAIT_ARGS, 1
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP3_WAIT_ARGS
+        ; Idle
+        VM_IDLE
 
         VM_JUMP                 1$
         ; Stop Script

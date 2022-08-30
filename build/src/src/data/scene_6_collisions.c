@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 6
+// Scene: amogus
 // Collisions
 
 #include "gbs_types.h"

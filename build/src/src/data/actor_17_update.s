@@ -2,112 +2,174 @@
 
 .include "vm.i"
 .include "data/game_globals.i"
-.include "macro.i"
-
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_15, _scene_15
 
 .area _CODE_255
 
 .LOCAL_ACTOR = -4
-.LOCAL_TMP1_WAIT_ARGS = -5
-.LOCAL_TMP2_WAIT_ARGS = -6
 
 ___bank_actor_17_update = 255
 .globl ___bank_actor_17_update
 
 _actor_17_update::
-        VM_RESERVE              6
+        VM_RESERVE              4
 
 1$:
         ; If Variable True
-        VM_IF_CONST             .GT, VAR_MOVING, 0, 2$, 0
+        VM_IF_CONST             .GT, VAR_TRANSITION, 0, 2$, 0
         VM_JUMP                 3$
 2$:
         ; Actor Set Active
-        VM_SET_CONST            .LOCAL_ACTOR, 1
+        VM_SET_CONST            .LOCAL_ACTOR, 0
 
-        ; If Actor At Position
+        ; Store Position In Variables
         VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    768
-            .R_OPERATOR .EQ
+            .R_INT16    16
+            .R_OPERATOR .DIV
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    1152
-            .R_OPERATOR .EQ
-            .R_OPERATOR .AND
+            .R_INT16    16
+            .R_OPERATOR .DIV
             .R_STOP
-        VM_IF_CONST             .EQ, .ARG0, 0, 4$, 1
+        VM_SET                  VAR_S15A3_LOCAL_0, .ARG1
+        VM_SET                  VAR_S15A3_LOCAL_1, .ARG0
+        VM_POP                  2
 
-        ; Variable L0 = 1-VAR_SPIKES
+        ; Variable L3 = 56-VAR_S15A3_LOCAL_1
         VM_RPN
-            .R_INT16    1
-            .R_REF      VAR_SPIKES
+            .R_INT16    56
+            .R_REF      VAR_S15A3_LOCAL_1
             .R_OPERATOR .SUB
             .R_STOP
-        VM_SET                  VAR_S14A14_LOCAL_0, .ARG0
+        VM_SET                  VAR_S15A3_LOCAL_3, .ARG0
         VM_POP                  1
 
-        VM_JUMP                 5$
-4$:
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 1
 
-        ; If Actor At Position
+        ; Store Position In Variables
         VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    1280
-            .R_OPERATOR .EQ
+            .R_INT16    16
+            .R_OPERATOR .DIV
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    1152
-            .R_OPERATOR .EQ
-            .R_OPERATOR .AND
+            .R_INT16    16
+            .R_OPERATOR .DIV
             .R_STOP
-        VM_IF_CONST             .EQ, .ARG0, 0, 6$, 1
+        VM_SET                  VAR_S15A3_LOCAL_2, .ARG1
+        VM_SET                  VAR_S15A3_LOCAL_4, .ARG0
+        VM_POP                  2
 
-        ; Variable L0 = VAR_SPIKES
+        ; Variable L5 = 56-VAR_S15A3_LOCAL_4
         VM_RPN
-            .R_REF      VAR_SPIKES
+            .R_INT16    56
+            .R_REF      VAR_S15A3_LOCAL_4
+            .R_OPERATOR .SUB
             .R_STOP
-        VM_SET                  VAR_S14A14_LOCAL_0, .ARG0
+        VM_SET                  VAR_S15A3_LOCAL_5, .ARG0
         VM_POP                  1
 
-        VM_JUMP                 7$
-6$:
-7$:
+        ; If VAR_S15A3_LOCAL_0<VAR_S15A3_LOCAL_2||((VAR_S15A3_LOCAL_1!=VAR_S15A3_LOCAL_4)&&(VAR_S15A3_LOCAL_1<VAR_S15A3_LOCAL_4)==(VAR_S15A3_LOCAL_0<10))
+        VM_RPN
+            .R_REF      VAR_S15A3_LOCAL_0
+            .R_REF      VAR_S15A3_LOCAL_2
+            .R_OPERATOR .LT
+            .R_REF      VAR_S15A3_LOCAL_1
+            .R_REF      VAR_S15A3_LOCAL_4
+            .R_OPERATOR .NE
+            .R_REF      VAR_S15A3_LOCAL_1
+            .R_REF      VAR_S15A3_LOCAL_4
+            .R_OPERATOR .LT
+            .R_REF      VAR_S15A3_LOCAL_0
+            .R_INT16    10
+            .R_OPERATOR .LT
+            .R_OPERATOR .EQ
+            .R_OPERATOR .AND
+            .R_OPERATOR .OR
+            .R_STOP
+        VM_IF_CONST             .GT, .ARG0, 0, 4$, 1
+        ; Variable L4 = 64-VAR_S15A3_LOCAL_2
+        VM_RPN
+            .R_INT16    64
+            .R_REF      VAR_S15A3_LOCAL_2
+            .R_OPERATOR .SUB
+            .R_STOP
+        VM_SET                  VAR_S15A3_LOCAL_4, .ARG0
+        VM_POP                  1
+
+        ; Variable L2 = 80-VAR_S15A3_LOCAL_0
+        VM_RPN
+            .R_INT16    80
+            .R_REF      VAR_S15A3_LOCAL_0
+            .R_OPERATOR .SUB
+            .R_STOP
+        VM_SET                  VAR_S15A3_LOCAL_2, .ARG0
+        VM_POP                  1
+
+        ; Call Script: dice transition
+        VM_PUSH_CONST           0 ; Actor 1
+        VM_PUSH_CONST           1 ; Actor 0
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_3 ; Variable V9
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_2 ; Variable V8
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_5 ; Variable V7
+        VM_PUSH_CONST           VAR_TEMP_0 ; Variable V3
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_1 ; Variable V2
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_0 ; Variable V1
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_4 ; Variable V0
+        VM_CALL_FAR             ___bank_script_4, _script_4
+
+        VM_JUMP                 5$
+4$:
+        ; Variable L4 = 80-VAR_S15A3_LOCAL_2
+        VM_RPN
+            .R_INT16    80
+            .R_REF      VAR_S15A3_LOCAL_2
+            .R_OPERATOR .SUB
+            .R_STOP
+        VM_SET                  VAR_S15A3_LOCAL_4, .ARG0
+        VM_POP                  1
+
+        ; Variable L2 = 64-VAR_S15A3_LOCAL_0
+        VM_RPN
+            .R_INT16    64
+            .R_REF      VAR_S15A3_LOCAL_0
+            .R_OPERATOR .SUB
+            .R_STOP
+        VM_SET                  VAR_S15A3_LOCAL_2, .ARG0
+        VM_POP                  1
+
+        ; Call Script: dice transition
+        VM_PUSH_CONST           1 ; Actor 1
+        VM_PUSH_CONST           0 ; Actor 0
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_5 ; Variable V9
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_4 ; Variable V8
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_3 ; Variable V7
+        VM_PUSH_CONST           VAR_TEMP_0 ; Variable V3
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_1 ; Variable V2
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_0 ; Variable V1
+        VM_PUSH_CONST           VAR_S15A3_LOCAL_2 ; Variable V0
+        VM_CALL_FAR             ___bank_script_4, _script_4
 
 5$:
 
-        ; If VAR_S14A14_LOCAL_0
-        VM_RPN
-            .R_REF      VAR_S14A14_LOCAL_0
-            .R_STOP
-        VM_IF_CONST             .GT, .ARG0, 0, 8$, 1
-        VM_JUMP                 9$
-8$:
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 2
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP1_WAIT_ARGS
+        ; Actor Set Active
+        VM_SET_CONST            .LOCAL_ACTOR, 4
 
-        ; Load Scene
-        VM_SET_CONST_INT8       _fade_frames_per_step, 1
-        VM_FADE_OUT             1
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 512
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 2)/, 1152
-        VM_ACTOR_SET_POS        .LOCAL_ACTOR
-        VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_DOWN
-        VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_15
+        ; Actor Set Spritesheet
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_hearts, _sprite_hearts
 
-9$:
+        ; Actor Show
+        VM_SET_CONST            .LOCAL_ACTOR, 2
+        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 0
+
+        ; Variable Set To False
+        VM_SET_CONST            VAR_TRANSITION, 0
 
 3$:
 
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 1
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
+        ; Idle
+        VM_IDLE
 
         VM_JUMP                 1$
         ; Stop Script

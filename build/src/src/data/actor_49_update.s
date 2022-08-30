@@ -3,18 +3,15 @@
 .include "vm.i"
 .include "data/game_globals.i"
 
-.globl b_wait_frames, _wait_frames
-
 .area _CODE_255
 
 .LOCAL_ACTOR = -4
-.LOCAL_TMP1_WAIT_ARGS = -5
 
 ___bank_actor_49_update = 255
 .globl ___bank_actor_49_update
 
 _actor_49_update::
-        VM_RESERVE              5
+        VM_RESERVE              4
 
 1$:
         ; If Variable True
@@ -171,9 +168,8 @@ _actor_49_update::
 
 3$:
 
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 1
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP1_WAIT_ARGS
+        ; Idle
+        VM_IDLE
 
         VM_JUMP                 1$
         ; Stop Script

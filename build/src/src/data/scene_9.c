@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 9
+// Scene: Settings
 
 #include "gbs_types.h"
 #include "data/bg_help_copy.h"

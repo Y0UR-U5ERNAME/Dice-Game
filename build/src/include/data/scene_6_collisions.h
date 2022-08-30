@@ -1,7 +1,7 @@
 #ifndef SCENE_6_COLLISIONS_H
 #define SCENE_6_COLLISIONS_H
 
-// Scene: Scene 6
+// Scene: amogus
 // Collisions
 
 #include "gbs_types.h"

@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 5
+// Scene: L5
 // Projectiles
 
 #include "gbs_types.h"

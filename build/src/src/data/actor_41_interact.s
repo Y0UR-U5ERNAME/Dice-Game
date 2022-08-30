@@ -1,4 +1,4 @@
-.module actor_42_interact
+.module actor_41_interact
 
 .include "vm.i"
 .include "data/game_globals.i"
@@ -11,10 +11,10 @@
 .LOCAL_TMP0_PARAM0_VALUE = -4
 .LOCAL_ACTOR = -4
 
-___bank_actor_42_interact = 255
-.globl ___bank_actor_42_interact
+___bank_actor_41_interact = 255
+.globl ___bank_actor_41_interact
 
-_actor_42_interact::
+_actor_41_interact::
         VM_RESERVE              4
 
         ; If Parameter 0 Equals 4
@@ -110,7 +110,7 @@ _actor_42_interact::
         VM_FADE_OUT             1
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 1536
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 2)/, 1664
+        VM_SET_CONST            ^/(.LOCAL_ACTOR + 2)/, 1408
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_DOWN
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3

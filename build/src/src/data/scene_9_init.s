@@ -54,23 +54,23 @@ _scene_9_init::
         VM_ACTOR_SET_ANIM_FRAME .LOCAL_ACTOR
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      4, ___bank_script_input_36, _script_input_36
+        VM_CONTEXT_PREPARE      4, ___bank_script_input_42, _script_input_42
         VM_INPUT_ATTACH         16, ^/(4 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      7, ___bank_script_input_37, _script_input_37
+        VM_CONTEXT_PREPARE      7, ___bank_script_input_43, _script_input_43
         VM_INPUT_ATTACH         2, ^/(7 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      8, ___bank_script_input_38, _script_input_38
+        VM_CONTEXT_PREPARE      8, ___bank_script_input_44, _script_input_44
         VM_INPUT_ATTACH         1, ^/(8 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      6, ___bank_script_input_39, _script_input_39
+        VM_CONTEXT_PREPARE      6, ___bank_script_input_45, _script_input_45
         VM_INPUT_ATTACH         4, ^/(6 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      5, ___bank_script_input_40, _script_input_40
+        VM_CONTEXT_PREPARE      5, ___bank_script_input_46, _script_input_46
         VM_INPUT_ATTACH         8, ^/(5 | .OVERRIDE_DEFAULT)/
 
         ; Actor Set Active

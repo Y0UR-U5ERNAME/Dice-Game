@@ -1,7 +1,7 @@
 #ifndef SCENE_2_H
 #define SCENE_2_H
 
-// Scene: Scene 2
+// Scene: L1
 
 #include "gbs_types.h"
 

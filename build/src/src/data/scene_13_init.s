@@ -28,32 +28,35 @@ _scene_13_init::
         ; Actor Set Spritesheet
         VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_cursor2, _sprite_cursor2
 
+        ; Overlay Hide
+        VM_OVERLAY_HIDE
+
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      7, ___bank_script_input_66, _script_input_66
+        VM_CONTEXT_PREPARE      7, ___bank_script_input_78, _script_input_78
         VM_INPUT_ATTACH         2, ^/(7 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      6, ___bank_script_input_67, _script_input_67
+        VM_CONTEXT_PREPARE      6, ___bank_script_input_79, _script_input_79
         VM_INPUT_ATTACH         4, ^/(6 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      5, ___bank_script_input_68, _script_input_68
+        VM_CONTEXT_PREPARE      5, ___bank_script_input_80, _script_input_80
         VM_INPUT_ATTACH         8, ^/(5 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      8, ___bank_script_input_69, _script_input_69
+        VM_CONTEXT_PREPARE      8, ___bank_script_input_81, _script_input_81
         VM_INPUT_ATTACH         1, ^/(8 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      1, ___bank_script_input_70, _script_input_70
+        VM_CONTEXT_PREPARE      1, ___bank_script_input_82, _script_input_82
         VM_INPUT_ATTACH         128, ^/(1 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      4, ___bank_script_input_71, _script_input_71
+        VM_CONTEXT_PREPARE      4, ___bank_script_input_83, _script_input_83
         VM_INPUT_ATTACH         16, ^/(4 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      2, ___bank_script_input_72, _script_input_72
+        VM_CONTEXT_PREPARE      2, ___bank_script_input_84, _script_input_84
         VM_INPUT_ATTACH         64, ^/(2 | .OVERRIDE_DEFAULT)/
 
         ; Actor Set Active

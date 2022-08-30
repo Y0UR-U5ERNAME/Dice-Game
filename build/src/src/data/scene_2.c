@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 2
+// Scene: L1
 
 #include "gbs_types.h"
 #include "data/bg_level1.h"
@@ -29,7 +29,7 @@ const struct scene_t scene_2 = {
     .sprite_palette = TO_FAR_PTR_T(palette_9),
     .reserve_tiles = 0,
     .player_sprite = TO_FAR_PTR_T(sprite_dice),
-    .n_actors = 3,
+    .n_actors = 5,
     .n_triggers = 2,
     .n_sprites = 2,
     .n_projectiles = 1,

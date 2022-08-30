@@ -10,13 +10,12 @@
 
 .LOCAL_ACTOR = -4
 .LOCAL_TMP1_WAIT_ARGS = -5
-.LOCAL_TMP2_WAIT_ARGS = -6
 
 ___bank_actor_15_update = 255
 .globl ___bank_actor_15_update
 
 _actor_15_update::
-        VM_RESERVE              6
+        VM_RESERVE              5
 
 1$:
         ; If Variable True
@@ -161,9 +160,11 @@ _actor_15_update::
 
 3$:
 
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 1
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
+        ; Idle
+        VM_IDLE
+
+        ; Idle
+        VM_IDLE
 
         VM_JUMP                 1$
         ; Stop Script

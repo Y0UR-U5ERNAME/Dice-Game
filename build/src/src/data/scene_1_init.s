@@ -24,6 +24,9 @@ _scene_1_init::
         ; Actor Set Animation State
         VM_ACTOR_SET_ANIM_SET   .LOCAL_ACTOR, STATE_E
 
+        ; Overlay Hide
+        VM_OVERLAY_HIDE
+
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
@@ -34,7 +37,7 @@ _scene_1_init::
         VM_INPUT_DETACH         223
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_song_free_ost_1_character_s_Data, _song_free_ost_1_character_s_Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_song_free_ost_1_character_s_Data, _song_free_ost_1_character_s_Data, .MUSIC_NO_LOOP
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0

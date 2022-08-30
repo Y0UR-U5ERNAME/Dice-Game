@@ -148,7 +148,7 @@ _script_input_8::
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
-        ; Actor Move Relative
+        ; Actor Set Position Relative
         VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
@@ -165,8 +165,7 @@ _script_input_8::
         VM_SET                  ^/(.LOCAL_ACTOR + 1 - 2)/, .ARG1
         VM_SET                  ^/(.LOCAL_ACTOR + 2 - 2)/, .ARG0
         VM_POP                  2
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
-        VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
+        VM_ACTOR_SET_POS        .LOCAL_ACTOR
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
@@ -204,7 +203,7 @@ _script_input_8::
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
-        ; Actor Move Relative
+        ; Actor Set Position Relative
         VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
@@ -221,8 +220,7 @@ _script_input_8::
         VM_SET                  ^/(.LOCAL_ACTOR + 1 - 2)/, .ARG1
         VM_SET                  ^/(.LOCAL_ACTOR + 2 - 2)/, .ARG0
         VM_POP                  2
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
-        VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
+        VM_ACTOR_SET_POS        .LOCAL_ACTOR
 
 8$:
 

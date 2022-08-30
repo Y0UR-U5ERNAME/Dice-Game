@@ -18,32 +18,45 @@ _scene_16_init::
 
         VM_RESERVE              4
 
+        ; Actor Hide
+        VM_SET_CONST            .LOCAL_ACTOR, 2
+        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
+
+        ; Actor Set Active
+        VM_SET_CONST            .LOCAL_ACTOR, 2
+
+        ; Actor Set Spritesheet
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_cursor2, _sprite_cursor2
+
+        ; Overlay Hide
+        VM_OVERLAY_HIDE
+
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      7, ___bank_script_input_90, _script_input_90
+        VM_CONTEXT_PREPARE      7, ___bank_script_input_109, _script_input_109
         VM_INPUT_ATTACH         2, ^/(7 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      6, ___bank_script_input_91, _script_input_91
+        VM_CONTEXT_PREPARE      6, ___bank_script_input_110, _script_input_110
         VM_INPUT_ATTACH         4, ^/(6 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      5, ___bank_script_input_92, _script_input_92
+        VM_CONTEXT_PREPARE      5, ___bank_script_input_111, _script_input_111
         VM_INPUT_ATTACH         8, ^/(5 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      8, ___bank_script_input_93, _script_input_93
+        VM_CONTEXT_PREPARE      8, ___bank_script_input_112, _script_input_112
         VM_INPUT_ATTACH         1, ^/(8 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      1, ___bank_script_input_94, _script_input_94
+        VM_CONTEXT_PREPARE      1, ___bank_script_input_113, _script_input_113
         VM_INPUT_ATTACH         128, ^/(1 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      4, ___bank_script_input_95, _script_input_95
+        VM_CONTEXT_PREPARE      4, ___bank_script_input_114, _script_input_114
         VM_INPUT_ATTACH         16, ^/(4 | .OVERRIDE_DEFAULT)/
 
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      2, ___bank_script_input_96, _script_input_96
+        VM_CONTEXT_PREPARE      2, ___bank_script_input_115, _script_input_115
         VM_INPUT_ATTACH         64, ^/(2 | .OVERRIDE_DEFAULT)/
 
         ; Actor Set Active

@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 7
+// Scene: Splash Screen
 // Collisions
 
 #include "gbs_types.h"

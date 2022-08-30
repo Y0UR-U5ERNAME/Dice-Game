@@ -25,7 +25,7 @@ _trigger_23_interact::
             .R_INT16    768
             .R_OPERATOR .EQ
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    1408
+            .R_INT16    1152
             .R_OPERATOR .EQ
             .R_OPERATOR .AND
             .R_STOP

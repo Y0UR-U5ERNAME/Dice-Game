@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 3
+// Scene: DMG
 
 #include "gbs_types.h"
 #include "data/bg_placeholder.h"

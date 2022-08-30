@@ -18,6 +18,19 @@ _scene_2_init::
 
         VM_RESERVE              4
 
+        ; Actor Hide
+        VM_SET_CONST            .LOCAL_ACTOR, 5
+        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
+
+        ; Actor Set Active
+        VM_SET_CONST            .LOCAL_ACTOR, 5
+
+        ; Actor Set Spritesheet
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_cursor2, _sprite_cursor2
+
+        ; Overlay Hide
+        VM_OVERLAY_HIDE
+
         ; Input Script Attach
         VM_CONTEXT_PREPARE      7, ___bank_script_input_8, _script_input_8
         VM_INPUT_ATTACH         2, ^/(7 | .OVERRIDE_DEFAULT)/

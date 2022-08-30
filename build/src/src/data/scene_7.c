@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 7
+// Scene: Splash Screen
 
 #include "gbs_types.h"
 #include "data/bg_pre_title.h"

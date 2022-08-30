@@ -57,7 +57,7 @@ const metasprite_t sprite_dice_metasprite_8[]  = {
 };
 
 const metasprite_t sprite_dice_metasprite_9[]  = {
-    { -4, 8, 24, 64 }, { 0, -8, 24, 96 },
+    { -4, 8, 26, 0 }, { 0, -8, 26, 32 },
     {metasprite_end}
 };
 

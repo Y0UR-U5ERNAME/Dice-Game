@@ -147,4 +147,4 @@ _script_4::
 4$:
 
         VM_RESERVE              -4
-        VM_RET_FAR
+        VM_RET_FAR_N            9

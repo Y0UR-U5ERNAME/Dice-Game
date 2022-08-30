@@ -19,15 +19,33 @@ _trigger_17_interact::
 
         VM_RESERVE              5
 
+        ; Actor Set Active
+        VM_SET_CONST            .LOCAL_ACTOR, 1
+
+        ; If Actor At Position
+        VM_ACTOR_GET_POS        .LOCAL_ACTOR
+        VM_RPN
+            .R_REF      ^/(.LOCAL_ACTOR + 1)/
+            .R_INT16    1024
+            .R_OPERATOR .EQ
+            .R_REF      ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    896
+            .R_OPERATOR .EQ
+            .R_OPERATOR .AND
+            .R_STOP
+        VM_IF_CONST             .EQ, .ARG0, 0, 1$, 1
+
+        VM_JUMP                 2$
+1$:
         ; If VAR_ANIMATION_FRAME!=3
         VM_RPN
             .R_REF      VAR_ANIMATION_FRAME
             .R_INT16    3
             .R_OPERATOR .NE
             .R_STOP
-        VM_IF_CONST             .GT, .ARG0, 0, 1$, 1
-        VM_JUMP                 2$
-1$:
+        VM_IF_CONST             .GT, .ARG0, 0, 3$, 1
+        VM_JUMP                 4$
+3$:
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
@@ -49,6 +67,8 @@ _trigger_17_interact::
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_DOWN
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
             IMPORT_FAR_PTR_DATA _scene_14
+
+4$:
 
 2$:
 

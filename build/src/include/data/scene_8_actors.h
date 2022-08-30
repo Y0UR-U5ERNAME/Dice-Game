@@ -1,7 +1,7 @@
 #ifndef SCENE_8_ACTORS_H
 #define SCENE_8_ACTORS_H
 
-// Scene: Scene 8
+// Scene: How to Play
 // Actors
 
 #include "gbs_types.h"

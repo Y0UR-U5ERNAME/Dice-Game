@@ -1,7 +1,7 @@
 #ifndef SCENE_15_PROJECTILES_H
 #define SCENE_15_PROJECTILES_H
 
-// Scene: Scene 2
+// Scene: TL5
 // Projectiles
 
 #include "gbs_types.h"

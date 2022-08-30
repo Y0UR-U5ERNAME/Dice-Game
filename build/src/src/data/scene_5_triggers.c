@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 5
+// Scene: L3
 // Triggers
 
 #include "gbs_types.h"

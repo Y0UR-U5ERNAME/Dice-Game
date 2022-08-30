@@ -2,21 +2,19 @@
 
 .include "vm.i"
 .include "data/game_globals.i"
-.include "macro.i"
 
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_4, _scene_4
+.globl b_wait_frames, _wait_frames
 
 .area _CODE_255
 
 .LOCAL_ACTOR = -4
 .LOCAL_TMP1_WAIT_ARGS = -5
-.LOCAL_TMP2_WAIT_ARGS = -6
 
 ___bank_actor_0_update = 255
 .globl ___bank_actor_0_update
 
 _actor_0_update::
-        VM_RESERVE              6
+        VM_RESERVE              5
 
 1$:
         ; If Variable True
@@ -342,8 +340,12 @@ _actor_0_update::
         VM_JUMP                 20$
 19$:
         ; Input Script Attach
-        VM_CONTEXT_PREPARE      1, ___bank_script_input_16, _script_input_16
-        VM_INPUT_ATTACH         223, ^/(1 | .OVERRIDE_DEFAULT)/
+        VM_CONTEXT_PREPARE      5, ___bank_script_input_16, _script_input_16
+        VM_INPUT_ATTACH         15, ^/(5 | .OVERRIDE_DEFAULT)/
+
+        ; Input Script Attach
+        VM_CONTEXT_PREPARE      4, ___bank_script_input_17, _script_input_17
+        VM_INPUT_ATTACH         16, ^/(4 | .OVERRIDE_DEFAULT)/
 
         ; If Variable True
         VM_IF_CONST             .GT, VAR_ROLL_ANIMATION, 0, 21$, 0
@@ -376,36 +378,26 @@ _actor_0_update::
         VM_SET                  ^/(.LOCAL_ACTOR + 1)/, VAR_S1A0_LOCAL_0
         VM_ACTOR_SET_ANIM_FRAME .LOCAL_ACTOR
 
-        ; Actor Set Active
-        VM_SET_CONST            .LOCAL_ACTOR, 1
+        VM_UNLOCK
 
-        ; Actor Emote
-        VM_ACTOR_EMOTE          .LOCAL_ACTOR, ___bank_emote_love, _emote_love
+        ; Call Script: transition
+        VM_PUSH_CONST           VAR_S1A0_LOCAL_1 ; Variable V1
+        VM_PUSH_CONST           VAR_S1A0_LOCAL_0 ; Variable V0
+        VM_CALL_FAR             ___bank_script_3, _script_3
 
-        ; Actor Set Active
-        VM_SET_CONST            .LOCAL_ACTOR, 0
+        ; Input Script Attach
+        VM_CONTEXT_PREPARE      4, ___bank_script_input_18, _script_input_18
+        VM_INPUT_ATTACH         16, ^/(4 | .OVERRIDE_DEFAULT)/
 
-        ; Actor Emote
-        VM_ACTOR_EMOTE          .LOCAL_ACTOR, ___bank_emote_love, _emote_love
-
-        ; Load Scene
-        VM_SET_CONST_INT8       _fade_frames_per_step, 1
-        VM_FADE_OUT             1
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 512
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 2)/, 1408
-        VM_ACTOR_SET_POS        .LOCAL_ACTOR
-        VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_DOWN
-        VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_4
+        ; Wait For Input
+        VM_INPUT_WAIT           208
 
 20$:
 
 18$:
 
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 1
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
+        ; Idle
+        VM_IDLE
 
         VM_JUMP                 1$
         ; Stop Script

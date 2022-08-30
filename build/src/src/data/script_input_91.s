@@ -33,8 +33,8 @@ _script_input_91::
             .R_INT16    128
             .R_OPERATOR .DIV
             .R_STOP
-        VM_SET                  VAR_S15_LOCAL_0, .ARG1
-        VM_SET                  VAR_S15_LOCAL_1, .ARG0
+        VM_SET                  VAR_S13_LOCAL_0, .ARG1
+        VM_SET                  VAR_S13_LOCAL_1, .ARG0
         VM_POP                  2
 
         ; Actor Set Active
@@ -50,33 +50,33 @@ _script_input_91::
             .R_INT16    128
             .R_OPERATOR .DIV
             .R_STOP
-        VM_SET                  VAR_S15_LOCAL_2, .ARG1
-        VM_SET                  VAR_S15_LOCAL_3, .ARG0
+        VM_SET                  VAR_S13_LOCAL_2, .ARG1
+        VM_SET                  VAR_S13_LOCAL_3, .ARG0
         VM_POP                  2
 
         ; Variable Set To True
         VM_SET_CONST            VAR_MOVING, 1
 
-        ; Variable T0 = VAR_S15_LOCAL_0
+        ; Variable T0 = VAR_S13_LOCAL_0
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_0
+            .R_REF      VAR_S13_LOCAL_0
             .R_STOP
         VM_SET                  VAR_TEMP_0, .ARG0
         VM_POP                  1
 
-        ; Variable T1 = VAR_S15_LOCAL_1-3
+        ; Variable T1 = VAR_S13_LOCAL_1+1
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_1
-            .R_INT16    3
-            .R_OPERATOR .SUB
+            .R_REF      VAR_S13_LOCAL_1
+            .R_INT16    1
+            .R_OPERATOR .ADD
             .R_STOP
         VM_SET                  VAR_TEMP_1, .ARG0
         VM_POP                  1
 
-        VM_GET_TILE_XY          VAR_S15_LOCAL_4, VAR_TEMP_0, VAR_TEMP_1
-        ; If VAR_S15_LOCAL_4%256>25
+        VM_GET_TILE_XY          VAR_S13_LOCAL_4, VAR_TEMP_0, VAR_TEMP_1
+        ; If VAR_S13_LOCAL_4%256>25
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_4
+            .R_REF      VAR_S13_LOCAL_4
             .R_INT16    256
             .R_OPERATOR .MOD
             .R_INT16    25
@@ -85,15 +85,15 @@ _script_input_91::
         VM_IF_CONST             .GT, .ARG0, 0, 3$, 1
         VM_JUMP                 4$
 3$:
-        ; If VAR_S15_LOCAL_1-2==VAR_S15_LOCAL_3&&VAR_S15_LOCAL_0==VAR_S15_LOCAL_2
+        ; If VAR_S13_LOCAL_1+2==VAR_S13_LOCAL_3&&VAR_S13_LOCAL_0==VAR_S13_LOCAL_2
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_1
+            .R_REF      VAR_S13_LOCAL_1
             .R_INT16    2
-            .R_OPERATOR .SUB
-            .R_REF      VAR_S15_LOCAL_3
+            .R_OPERATOR .ADD
+            .R_REF      VAR_S13_LOCAL_3
             .R_OPERATOR .EQ
-            .R_REF      VAR_S15_LOCAL_0
-            .R_REF      VAR_S15_LOCAL_2
+            .R_REF      VAR_S13_LOCAL_0
+            .R_REF      VAR_S13_LOCAL_2
             .R_OPERATOR .EQ
             .R_OPERATOR .AND
             .R_STOP
@@ -104,11 +104,11 @@ _script_input_91::
         VM_SET_CONST            .LOCAL_ACTOR, 0
         ; Store Frame In Variable
         VM_ACTOR_GET_ANIM_FRAME .LOCAL_ACTOR
-        VM_SET                  VAR_S15_LOCAL_0, ^/(.LOCAL_ACTOR + 1)/
+        VM_SET                  VAR_S13_LOCAL_0, ^/(.LOCAL_ACTOR + 1)/
 
-        ; Variable 1 = (VAR_S15_LOCAL_0+1)%6
+        ; Variable 1 = (VAR_S13_LOCAL_0+1)%6
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_0
+            .R_REF      VAR_S13_LOCAL_0
             .R_INT16    1
             .R_OPERATOR .ADD
             .R_INT16    6
@@ -131,7 +131,7 @@ _script_input_91::
             .R_INT16    0
             .R_OPERATOR .MAX
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    -256
+            .R_INT16    256
             .R_OPERATOR .ADD
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -146,7 +146,7 @@ _script_input_91::
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
-        ; Actor Move Relative
+        ; Actor Set Position Relative
         VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
@@ -155,7 +155,7 @@ _script_input_91::
             .R_INT16    0
             .R_OPERATOR .MAX
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    -128
+            .R_INT16    128
             .R_OPERATOR .ADD
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -163,19 +163,18 @@ _script_input_91::
         VM_SET                  ^/(.LOCAL_ACTOR + 1 - 2)/, .ARG1
         VM_SET                  ^/(.LOCAL_ACTOR + 2 - 2)/, .ARG0
         VM_POP                  2
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
-        VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
+        VM_ACTOR_SET_POS        .LOCAL_ACTOR
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
         ; Actor Set Animation Frame
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 8
+        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 9
         VM_ACTOR_SET_ANIM_FRAME .LOCAL_ACTOR
 
-        ; Variable 1 = (VAR_S15_LOCAL_0+1)%6
+        ; Variable 1 = (VAR_S13_LOCAL_0+1)%6
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_0
+            .R_REF      VAR_S13_LOCAL_0
             .R_INT16    1
             .R_OPERATOR .ADD
             .R_INT16    6
@@ -192,7 +191,7 @@ _script_input_91::
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
         ; Actor Set Animation Frame
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 9
+        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 8
         VM_ACTOR_SET_ANIM_FRAME .LOCAL_ACTOR
 
         ; Wait N Frames
@@ -202,7 +201,7 @@ _script_input_91::
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
-        ; Actor Move Relative
+        ; Actor Set Position Relative
         VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
@@ -211,7 +210,7 @@ _script_input_91::
             .R_INT16    0
             .R_OPERATOR .MAX
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    -128
+            .R_INT16    128
             .R_OPERATOR .ADD
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -219,51 +218,50 @@ _script_input_91::
         VM_SET                  ^/(.LOCAL_ACTOR + 1 - 2)/, .ARG1
         VM_SET                  ^/(.LOCAL_ACTOR + 2 - 2)/, .ARG0
         VM_POP                  2
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
-        VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
+        VM_ACTOR_SET_POS        .LOCAL_ACTOR
 
 8$:
 
-        ; Variable L0 = (VAR_S15_LOCAL_0+1)%6
+        ; Variable L0 = (VAR_S13_LOCAL_0+1)%6
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_0
+            .R_REF      VAR_S13_LOCAL_0
             .R_INT16    1
             .R_OPERATOR .ADD
             .R_INT16    6
             .R_OPERATOR .MOD
             .R_STOP
-        VM_SET                  VAR_S15_LOCAL_0, .ARG0
+        VM_SET                  VAR_S13_LOCAL_0, .ARG0
         VM_POP                  1
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
         ; Actor Set Animation Frame To Variable
-        VM_SET                  ^/(.LOCAL_ACTOR + 1)/, VAR_S15_LOCAL_0
+        VM_SET                  ^/(.LOCAL_ACTOR + 1)/, VAR_S13_LOCAL_0
         VM_ACTOR_SET_ANIM_FRAME .LOCAL_ACTOR
 
         VM_JUMP                 6$
 5$:
-        ; Variable T0 = VAR_S15_LOCAL_2
+        ; Variable T0 = VAR_S13_LOCAL_2
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_2
+            .R_REF      VAR_S13_LOCAL_2
             .R_STOP
         VM_SET                  VAR_TEMP_0, .ARG0
         VM_POP                  1
 
-        ; Variable T1 = VAR_S15_LOCAL_3-3
+        ; Variable T1 = VAR_S13_LOCAL_3+1
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_3
-            .R_INT16    3
-            .R_OPERATOR .SUB
+            .R_REF      VAR_S13_LOCAL_3
+            .R_INT16    1
+            .R_OPERATOR .ADD
             .R_STOP
         VM_SET                  VAR_TEMP_1, .ARG0
         VM_POP                  1
 
-        VM_GET_TILE_XY          VAR_S15_LOCAL_4, VAR_TEMP_0, VAR_TEMP_1
-        ; If VAR_S15_LOCAL_4%256>25
+        VM_GET_TILE_XY          VAR_S13_LOCAL_4, VAR_TEMP_0, VAR_TEMP_1
+        ; If VAR_S13_LOCAL_4%256>25
         VM_RPN
-            .R_REF      VAR_S15_LOCAL_4
+            .R_REF      VAR_S13_LOCAL_4
             .R_INT16    256
             .R_OPERATOR .MOD
             .R_INT16    25
@@ -276,7 +274,7 @@ _script_input_91::
         VM_CALL_FAR             ___bank_script_1, _script_1
 
         ; Variable Set To Value
-        VM_SET_CONST            VAR_DIRECTION, 2
+        VM_SET_CONST            VAR_DIRECTION, 3
 
         ; If Variable True
         VM_IF_CONST             .GT, VAR_ROLL_ANIMATION, 0, 11$, 0
@@ -292,7 +290,7 @@ _script_input_91::
             .R_INT16    0
             .R_OPERATOR .MAX
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    -256
+            .R_INT16    256
             .R_OPERATOR .ADD
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -316,7 +314,7 @@ _script_input_91::
             .R_INT16    0
             .R_OPERATOR .MAX
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    -256
+            .R_INT16    256
             .R_OPERATOR .ADD
             .R_INT16    0
             .R_OPERATOR .MAX

@@ -1,7 +1,7 @@
 #ifndef SCENE_11_COLLISIONS_H
 #define SCENE_11_COLLISIONS_H
 
-// Scene: Scene 11
+// Scene: TL1
 // Collisions
 
 #include "gbs_types.h"

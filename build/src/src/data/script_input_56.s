@@ -17,7 +17,7 @@ _script_input_56::
         VM_RESERVE              4
 
         ; Load Scene
-        VM_SET_CONST_INT8       _fade_frames_per_step, 1
+        VM_SET_CONST_INT8       _fade_frames_per_step, 3
         VM_FADE_OUT             1
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 1152

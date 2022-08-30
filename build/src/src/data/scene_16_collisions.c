@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 2
+// Scene: TL6
 // Collisions
 
 #include "gbs_types.h"

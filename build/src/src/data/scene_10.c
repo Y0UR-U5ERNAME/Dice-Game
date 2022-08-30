@@ -1,11 +1,11 @@
 #pragma bank 255
 
-// Scene: Scene 5
+// Scene: L5
 
 #include "gbs_types.h"
 #include "data/bg_level4.h"
 #include "data/scene_10_collisions.h"
-#include "data/palette_4.h"
+#include "data/palette_6.h"
 #include "data/palette_9.h"
 #include "data/sprite_dice.h"
 #include "data/scene_10_actors.h"
@@ -25,11 +25,11 @@ const struct scene_t scene_10 = {
     .parallax_rows = {
         PARALLAX_STEP(0,0,0)
     },
-    .palette = TO_FAR_PTR_T(palette_4),
+    .palette = TO_FAR_PTR_T(palette_6),
     .sprite_palette = TO_FAR_PTR_T(palette_9),
     .reserve_tiles = 0,
     .player_sprite = TO_FAR_PTR_T(sprite_dice),
-    .n_actors = 3,
+    .n_actors = 4,
     .n_triggers = 9,
     .n_sprites = 2,
     .n_projectiles = 1,

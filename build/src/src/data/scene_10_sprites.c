@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 5
+// Scene: L5
 // Sprites
 
 #include "gbs_types.h"

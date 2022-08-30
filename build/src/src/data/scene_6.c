@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 6
+// Scene: amogus
 
 #include "gbs_types.h"
 #include "data/bg_level7.h"

@@ -1,6 +1,6 @@
 #pragma bank 255
 
-// Scene: Scene 9
+// Scene: Settings
 // Actors
 
 #include "gbs_types.h"

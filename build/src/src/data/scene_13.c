@@ -1,12 +1,12 @@
 #pragma bank 255
 
-// Scene: Scene 2
+// Scene: TL3
 
 #include "gbs_types.h"
 #include "data/bg_level1_copy_0.h"
 #include "data/scene_13_collisions.h"
-#include "data/palette_7.h"
-#include "data/palette_11.h"
+#include "data/palette_1.h"
+#include "data/palette_9.h"
 #include "data/sprite_dice.h"
 #include "data/scene_13_actors.h"
 #include "data/scene_13_sprites.h"
@@ -24,8 +24,8 @@ const struct scene_t scene_13 = {
     .parallax_rows = {
         PARALLAX_STEP(0,0,0)
     },
-    .palette = TO_FAR_PTR_T(palette_7),
-    .sprite_palette = TO_FAR_PTR_T(palette_11),
+    .palette = TO_FAR_PTR_T(palette_1),
+    .sprite_palette = TO_FAR_PTR_T(palette_9),
     .reserve_tiles = 0,
     .player_sprite = TO_FAR_PTR_T(sprite_dice),
     .n_actors = 3,
