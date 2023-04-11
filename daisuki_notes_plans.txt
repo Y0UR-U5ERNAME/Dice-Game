@@ -1,0 +1,4 @@
+todo list:
+make level 6
+make easter egg seed match
+change version number
