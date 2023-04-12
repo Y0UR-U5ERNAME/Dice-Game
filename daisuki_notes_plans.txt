@@ -1,4 +1,12 @@
-todo list:
-make level 6
-make easter egg seed match
-change version number
+
+
+to trigger secret level:
+hold b on splash screen
+beat all tutorial levels and main levels
+go to settings once after that
+scroll down to the bottom
+
+l1, l2, l3, l4, l5
+tl4, tl6
+
+push to github
