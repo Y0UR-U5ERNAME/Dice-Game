@@ -1,12 +1,14 @@
-
-
 to trigger secret level:
 hold b on splash screen
 beat all tutorial levels and main levels
 go to settings once after that
 scroll down to the bottom
 
-l1, l2, l3, l4, l5
-tl4, tl6
 
-push to github
+
+known bugs:
+actor 1 cannot push back in level 5
+player can go onto white space if arrows pressed quickly after going on conveyor level 5
+actor 1 death not triggered when on wrong number level 5
+
+checkered pattern is off in level 1 rounded corner
